@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Style/web.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script defer src="script.js"></script>
+    <title>Servicios</title>
+</head>
+<body>
+    <!-- Cabecera -->
+    <header>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+        <div class="user-info">
+            <span class="user-name">Nick Rodriguez</span>
+            <span class="user-role">Software Engineer</span>
+        </div>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav id="menu" class="menu">
+        <ul>
+            <li>
+                <a href="/"><i class="fas fa-home"></i> Inicio</a>
+                <a href="/description"><i class="fas fa-info-circle"></i> Descripción Web</a>
+                <a href="/services"><i class="fas fa-cogs"></i> Servicios</a>
+                <a href="/contact"><i class="fas fa-envelope"></i> Contáctame</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <section class="welcome-message">
+            <h1 class="service"><i class="fas fa-code"></i> Servicios y Proyectos</h1>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>APIs y Microservicios</h3>
+                    <p>Desarrollo de APIs RESTful y microservicios usando Go, Node.js y Python. Integración con bases de datos y servicios externos.</p>
+                    <button onclick="verDemo('api')" class="demo-button">Ver Demo</button>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Gestión de Bases de Datos</h3>
+                    <p>Diseño e implementación de bases de datos SQL y NoSQL. Optimización de consultas y modelado de datos.</p>
+                    <button onclick="verDemo('db')" class="demo-button">Ver Demo</button>
+                </div>
+              
+                <div class="service-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Logging</h3>
+                    <p>Implementación de sistemas de registro para aplicaciones web y servicios.</p>
+                    <button onclick="verDemo('logging')" class="demo-button">Ver Demo</button>
+                </div>
+            </div>
+
+            <div id="demo-container" class="demo-container">
+                <h2>Área de Demostración</h2>
+                <div id="demo-content" class="demo-content">
+                    <p>Selecciona un servicio para ver una demostración en vivo.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        function verDemo(tipo) {
+            const demoContent = document.getElementById('demo-content');
+            demoContent.innerHTML = `<p>Cargando demostración de ${tipo}...</p>`;
+            
+            // Aquí puedes agregar la lógica para cargar diferentes demos
+            fetch(`/api/demo/${tipo}`)
+                .then(response => response.json())
+                .then(data => {
+                    switch (tipo) {
+                        case 'api':
+                            demoContent.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                            break;
+                        case 'db':
+                            demoContent.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                            break;
+                        case 'web':
+                            demoContent.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                            break;
+                        default:
+                            demoContent.innerHTML = `<p>El tipo de demo solicitado no está disponible.</p>`;
+                    }
+                })
+                .catch(error => {
+                    demoContent.innerHTML = `<p>Error al cargar la demo: ${error.message}</p>`;
+                });
+        }
+    </script>
+</body>
+</html>

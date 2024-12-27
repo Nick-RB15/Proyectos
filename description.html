@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Style/web.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script defer src="script.js"></script>
+    <title>Descripción</title>
+</head>
+<body>
+    <!-- Cabecera -->
+    <header>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+        <div class="user-info">
+            <span class="user-name">Nick Rodriguez</span>
+            <span class="user-role">Software Engineer</span>
+        </div>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav id="menu" class="menu">
+        <ul>
+            <li>
+                <a href="/"><i class="fas fa-home"></i> Inicio</a>
+                <a href="/description"><i class="fas fa-info-circle"></i> Descripción Web</a>
+                <a href="/services"><i class="fas fa-cogs"></i> Servicios</a>
+                <a href="/contact"><i class="fas fa-envelope"></i> Contáctame</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <section class="welcome-message">
+            <h1 class="description"><i class="fas fa-code"></i> Descripción del Proyecto</h1>
+            <div class="description-content">
+                <div class="tech-stack">
+                    <h3><i class="fas fa-layer-group"></i> Stack Tecnológico</h3>
+                    <ul>
+                        <li><i class="fab fa-golang"></i> Go (Backend)</li>
+                        <li><i class="fab fa-html5"></i> HTML5</li>
+                        <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                        <li><i class="fab fa-js"></i> JavaScript</li>
+                        <li><i class="fas fa-database"></i> SQLite (Base de datos)</li>
+                        <li><i class="fab fa-python"></i> Python</li>
+                        <li><i class="fab fa-docker"></i> Docker</li>
+                    </ul>
+                </div>
+                <div class="project-description">
+                    <p>
+                        Este sitio web ha sido creado para mostrar mi progreso en desarrollo web, así como en:
+                    </p>
+                    <ul>
+                        <li><i class="fas fa-tasks"></i> Gestión de aplicaciones</li>
+                        <li><i class="fas fa-database"></i> Bases de datos</li>
+                        <li><i class="fas fa-network-wired"></i> Llamadas API</li>
+                        <li><i class="fas fa-microchip"></i> Microservicios</li>
+                        <li><i class="fas fa-code-branch"></i> Lógica de programación</li>
+                    <li><i class="fas fa-docker"></i> Almacenamiento en Docker para el registro de logs</li>
+                    <li><i class="fas fa-file-alt"></i> Creación de un sistema de registro para una aplicación</li>
+                    </ul>
+                    <div class="project-description-text">
+                        <p>
+                            Utiliza el lenguaje de programación Go, que destaca por su capacidad para implementar múltiples servicios de manera eficiente y escalable. La aplicación no solo demuestra mis habilidades técnicas, sino que también refleja mi compromiso con las mejores prácticas en el desarrollo de software y mi pasión por el aprendizaje continuo en este campo en constante evolución.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

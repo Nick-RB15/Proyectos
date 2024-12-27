@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Style/web.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script defer src="script.js"></script>
+    <title>Contacto</title>
+</head>
+<body>
+    <!-- Cabecera -->
+    <header>
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+        <div class="user-info">
+            <span class="user-name">Nick Rodriguez</span>
+            <span class="user-role">Software Engineer</span>
+        </div>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav id="menu" class="menu">
+        <ul>
+            <li>
+                <a href="/"><i class="fas fa-home"></i> Inicio</a>
+                <a href="/description"><i class="fas fa-info-circle"></i> Descripción Web</a>
+                <a href="/services"><i class="fas fa-cogs"></i> Servicios</a>
+                <a href="/contact"><i class="fas fa-envelope"></i> Contáctame</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <section class="welcome-message">
+            <h1 class="contact"><i class="fas fa-envelope"></i> Contáctame</h1>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3><i class="fas fa-address-card"></i> Información de Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> borbormauricio8@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +593 99 002 8381</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Santa Elena, Ecuador</li>
+                        <li><i class="fab fa-github"></i> https://github.com/Nick-RB15</li>
+                        <li><i class="fab fa-linkedin"></i> https://www.linkedin.com/in/nick-rodr%C3%ADguez-38b89b29a/</li>
+                    </ul>
+                </div>
+                <div class="contact-actions">
+                    <h3><i class="fas fa-comments"></i> Interactuar</h3>
+                    <form class="contact-form">
+                        <input type="text" id="nombre" placeholder="Nombre" required>
+                        <input type="email" id="email" placeholder="Correo electrónico" required>
+                        <input type="tel" id="telefono" placeholder="Teléfono" required>
+                        <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        <button onclick="enviarMensaje()" class="action-button">
+                            <i class="fas fa-paper-plane"></i> Enviar
+                        </button>
+                        <div id="resultado" class="resultado-mensaje"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function enviarMensaje() {
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const mensaje = document.getElementById('mensaje').value;
+            if (mensaje.trim() !== '') {
+                fetch('/enviar-mensaje', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nombre: nombre, email: email, telefono: telefono, mensaje: mensaje })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('resultado').innerText = data.mensaje;
+                    document.getElementById('mensaje').value = ''; // Limpiar el textarea después de enviar
+                    document.getElementById('nombre').value = ''; // Limpiar el input de nombre después de enviar
+                    document.getElementById('email').value = ''; // Limpiar el input de email después de enviar
+                    document.getElementById('telefono').value = ''; // Limpiar el input de telefono después de enviar
+                })
+                .catch(error => console.error('Error:', error));
+            } else {
+                document.getElementById('resultado').innerText = 'Por favor, escribe un mensaje.';
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

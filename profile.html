@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Style/web.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script defer src="script.js"></script>
+    <title>Perfil</title>
+</head>
+<body>
+    <!-- Cabecera -->
+    <header>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="user-info">
+            <span class="user-name">Nick Rodriguez</span>
+            <span class="user-role">Software Engineer</span>
+        </div>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav id="menu">
+        <ul class="nav-links">
+            <li><a href="/"><i class="fas fa-home"></i><span>Inicio</span></a></li>
+            <li><a href="/description"><i class="fas fa-info-circle"></i><span>Descripción Web</span></a></li>
+            <li><a href="/services"><i class="fas fa-cogs"></i><span>Servicios</span></a></li>
+            <li><a href="/contact"><i class="fas fa-envelope"></i><span>Contáctame</span></a></li>
+        </ul>
+    </nav>
+    <!-- Perfil Principal -->
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNLiDXqt8GgDBQ7cK1Ju0FH39Ie9bH9njKSidU-VnmnMvwE7QfbELo22Dx3I-NpQ4SULY2naOGNdztQ5ri_htNqntPg4G_euLMo-_U54s2-ai1c55xSxiwA_UKZBXcF3R_IXqeoXKAKRM/s1600/tecnico-programacion-php-co.jpg" alt="Cover Photo" class="cover-photo">
+            <img src="https://i.imgur.com/On7Ajly.jpeg" alt="Profile Photo" class="profile-photo">
+        </div>
+        <div class="profile-info">
+            <h1 class="profile">RODRIGUEZ BORBOR NICK MAURICIO</h1>
+            <p class="title">SOFTWARE ENGINEER</p>
+            <div class="bio">
+                <p>Desarrollador de software apasionado por crear soluciones innovadoras</p>
+            </div>
+            <div class="skills">
+                <h3>Habilidades</h3>
+                <ul>
+                    <li>Desarrollo Backend</li>
+                    <li>Bases de Datos</li>
+                    <li>Go Programming</li>
+                    <li>Cloud Computing</li>
+                    <li>API Design</li>
+                    <li>Microservices Architecture</li>
+                    <li>Security Best Practices</li>
+                </ul>
+            </div>
+            <div class="languages">
+                <h3>Lenguajes</h3>
+                <ul>
+                    <li>Go</li>
+                    <li>Python</li>
+                    <li>C++</li>
+                </ul>
+            </div>
+            <div class="contact-info">
+                <h3>Información de Contacto</h3>
+                <p><i class="fas fa-envelope"></i> borbormauricio8@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +593 99 002 8381</p>
+                <p><i class="fas fa-map-marker-alt"></i> Santa Elena, Ecuador</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const menu = document.getElementById('menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('show');
+                navLinks.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+</html>
